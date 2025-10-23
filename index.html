@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio von Idris Wahib - Computer Engineering Student und IT Intern. Entdecke meine Projekte, Skills und Leidenschaften.">
+    <meta name="keywords"
+        content="Idris Wahib, Computer Engineering, Autonome Systeme, Portfolio, Hochschule Esslingen">
+    <meta name="author" content="Idris Wahib">
+    <title>Idris Wahib - Computer Engineer</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F3F4F6;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: #FFFFFF;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1F2937;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #E5E7EB;
+            color: #1E3A8A;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1F2937;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: #FFFFFF;
+            padding: 1rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        /* Main Content */
+        .section {
+            min-height: 100vh;
+            display: none;
+            padding: 3rem 0;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #6B7280;
+        }
+
+        .about-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            object-fit: cover;
+            border: 3px solid #1E3A8A;
+        }
+
+        /* Terminal Intro */
+        .terminal {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .terminal-header span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #EF4444;
+        }
+
+        .terminal-header span:nth-child(2) {
+            background: #F59E0B;
+        }
+
+        .terminal-header span:nth-child(3) {
+            background: #10B981;
+        }
+
+        .terminal-text {
+            font-size: 1rem;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-module {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-module:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-module h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1E3A8A;
+        }
+
+        .skill-module p {
+            font-size: 0.9rem;
+            color: #6B7280;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .experience-module {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-module:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-module h3 {
+            font-size: 1.2rem;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-module p {
+            font-size: 0.9rem;
+            color: #6B7280;
+        }
+
+        /* Uni Section */
+        .uni-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .uni-module {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .uni-module:hover {
+            transform: scale(1.02);
+        }
+
+        .uni-module h3 {
+            font-size: 1.2rem;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .uni-module .date {
+            font-size: 0.9rem;
+            color: #6B7280;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Books Section */
+        .book-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .filter-group h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #1E3A8A;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #E5E7EB;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: #1F2937;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #3B82F6;
+            color: #FFFFFF;
+        }
+
+        .search-box {
+            padding: 0.8rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 5px;
+            background: #FFFFFF;
+            color: #1F2937;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #3B82F6;
+        }
+
+        .sort-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sort-group select {
+            padding: 0.8rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 5px;
+            background: #FFFFFF;
+            color: #1F2937;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .sort-group select:focus {
+            outline: none;
+            border-color: #3B82F6;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .book-module {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .book-module:hover {
+            transform: scale(1.02);
+        }
+
+        .book-module h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-module .author {
+            font-size: 0.9rem;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-module .opinion {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #6B7280;
+        }
+
+        .book-module .rating {
+            font-size: 0.9rem;
+            color: #F59E0B;
+            margin-top: 0.5rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #6B7280;
+        }
+
+        /* Modal for Book Details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #FFFFFF;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            font-size: 0.9rem;
+            color: #6B7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #1F2937;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .contact-content h2 {
+            font-size: 2rem;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-module {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-module:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-module a {
+            text-decoration: none;
+            color: #1F2937;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .contact-module a:hover {
+            color: #3B82F6;
+        }
+
+        .contact-module svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-form {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 0.9rem;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #3B82F6;
+        }
+
+        .contact-form button {
+            background: #3B82F6;
+            color: #FFFFFF;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #1E3A8A;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #FFFFFF;
+            border-top: 1px solid #E5E7EB;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .terminal {
+                padding: 1rem;
+            }
+
+            .terminal-text {
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 2rem 0;
+                min-height: auto;
+            }
+
+            .about-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content p {
+                font-size: 0.9rem;
+            }
+
+            .about-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Idris Wahib</div>
+                <div class="hamburger" onclick="toggleNav()">☰</div>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showSection('home')" class="active">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">Über mich</a></li>
+                    <li><a href="#" onclick="showSection('uni')">Uni</a></li>
+                    <li><a href="#" onclick="showSection('books')">Bibliothek</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <pre class="terminal-text">
+$ whoami
+Idris Wahib
+$ role
+Computer Engineering Student @ Esslingen University of Applied Sciences
+Intern IT (Werkstudent) @ QEST GmbH
+$ skills
+Object-Oriented Programming • Backend & Frontend Development • Troubleshooting • Software Engineering • Software Architecture
+$ passion
+Reading Books • Chess • Photography • Traveling
+$ connect
+idriswahib@icloud.com | linkedin.com/in/itsidris0
+        </pre>
+                </div>
+
+                <div class="skills-section">
+                    <h2>Meine Fähigkeiten</h2>
+                    <div class="skills-grid">
+                        <div class="skill-module">
+                            <h3>Programmierung</h3>
+                            <p>Java, Python, JavaScript, C++, C, VBA, Shell-Scripting, Apache Velocity</p>
+                        </div>
+                        <div class="skill-module">
+                            <h3>Web & Software Development</h3>
+                            <p>HTML, CSS, React, Node.js, Spring Boot, OOP, Software Architecture</p>
+                        </div>
+                        <div class="skill-module">
+                            <h3>Tools & Systeme</h3>
+                            <p>Git, Docker, MySQL, Linux, AWS, SQL, SVN, ALM/PLM, Netzwerke, CAD</p>
+                        </div>
+                        <div class="skill-module">
+                            <h3>Autonome Systeme & ML</h3>
+                            <p>Machine Learning, Algorithmen, Sensorik, Datenverarbeitung, Troubleshooting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-section">
+                    <h2>Berufserfahrung</h2>
+                    <div class="experience-grid">
+                        <div class="experience-module">
+                            <h3>Intern IT (Werkstudent) – QEST GmbH</h3>
+                            <p><strong>Seit 2025</strong>: Technische Unterstützung, Wartung von IT-Systemen, Hardware-
+                                und Softwarekonfiguration, Fehleranalyse und Implementierung moderner Technologien.</p>
+                        </div>
+                        <div class="experience-module">
+                            <h3>Warehouse Operator – IKEA GmbH</h3>
+                            <p><strong>10/2019 – 12/2025</strong></p>
+                        </div>
+                        <div class="experience-module">
+                            <h3>Werkstudent – Eberspächer GmbH</h3>
+                            <p><strong>03/2023 – 01/2024</strong>: Entwicklung von Polarion-Reports,
+                                Projektkonfiguration, SVN-Berechtigungsprüfung, Erstellung von Betriebskonzepten und
+                                operative Unterstützung.</p>
+                        </div>
+                        <div class="experience-module">
+                            <h3>Praktikant – Siemens Healthineers</h3>
+                            <p><strong>04/2019 – 05/2019</strong>: Mitarbeit in der Logistikprozessplanung (PLM),
+                                Unterstützung bei logistischen Abläufen und Prozessoptimierung.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="about-content">
+                    <h2>Über mich</h2>
+                    <img src="idris.jpg" alt="Idris Wahib" class="about-image">
+                    <p>Ich bin Idris Wahib, ein leidenschaftlicher Computer Engineering Student an der Hochschule
+                        Esslingen. Mein akademischer Weg hat mich tief in die Welt der Technologie geführt, mit einem
+                        besonderen Fokus auf autonome Systeme und Softwareentwicklung. Bei QEST GmbH sammle ich als
+                        IT-Praktikant wertvolle praktische Erfahrungen, indem ich Computersysteme warte, Software
+                        konfiguriere, Projekte übernehme und innovative Lösungen entwickle.</p>
+                    <p>Neben meiner Begeisterung für Technologie inspiriert mich die Literatur, insbesondere Werke aus
+                        der klassischen und modernen arabischen Literatur.
+                        Die Bücher haben meinen Blick auf die Welt erweitert und meine analytischen Fähigkeiten
+                        geschärft.
+                        In meiner Freizeit arbeite ich an persönlichen Projekten, wie Plannugn und Beratung,
+                        und erkunde neue Technologien wie Machine Learning und Cloud Computing.</p>
+                    <p>Mein Ziel ist es, Technologien zu entwickeln, die einen positiven Einfluss auf die Gesellschaft
+                        haben. Ich bin immer auf der Suche nach neuen Herausforderungen und Möglichkeiten, mein Wissen
+                        zu erweitern. Lass uns in Kontakt treten, um über Technologie, Literatur oder gemeinsame
+                        Projekte zu sprechen!</p>
+                </div>
+            </section>
+
+            <!-- Uni Section -->
+            <section id="uni" class="section">
+                <h2>Mein Studium</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Meine akademische Reise</p>
+                <div class="uni-grid">
+                    <div class="uni-module">
+                        <h3>1. Semester</h3>
+                        <p class="date">Sommer 2024</p>
+                        <p>Grundlagen: Mathematik IA/IB, Elektrotechnik 1, Programmieren. Erste Projekte in Java und
+                            Python, z. B. ein digitales Schachspiel.</p>
+                    </div>
+                    <div class="uni-module">
+                        <h3>2. Semester</h3>
+                        <p class="date">Winter 2024</p>
+                        <p>Vertiefung: Mathematik 2, Digitaltechnik 1, Betriebssysteme, Statistik. Entwicklung eines
+                            Betriebssystems-Simulators.</p>
+                    </div>
+                    <div class="uni-module">
+                        <h3>3. Semester</h3>
+                        <p class="date">Sommer 2025</p>
+                        <p>Fokus: Digitaltechnik 2, Rechnernetze, Softwaretechnik. Simulation autonomer Roboter und
+                            Netzwerk-Sicherheitsanalyse.</p>
+                    </div>
+                    <div class="uni-module">
+                        <h3>4. Semester (Aktuell)</h3>
+                        <p class="date">Winter 2025</p>
+                        <p>Fortgeschritten: Regelungstechnik, Sensoren, Algorithmen. Entwicklung eines Sensor-basierten
+                            Prototyps.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Books Section -->
+            <section id="books" class="section">
+                <h2>Meine Bibliothek</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Bücher, die meinen Horizont erweitern</p>
+                <div class="book-filters">
+                    <div class="filter-group">
+                        <h3>Suche</h3>
+                        <input type="text" id="book-search" class="search-box" placeholder="Titel oder Autor...">
+                    </div>
+                    <div class="filter-group">
+                        <h3>Kategorie</h3>
+                        <div class="filter-buttons" id="category-filters">
+                            <button class="filter-btn active" data-category="all">Alle</button>
+                            <button class="filter-btn" data-category="klassik">Klassische Literatur</button>
+                            <button class="filter-btn" data-category="krimi">Krimi & Mystery</button>
+                            <button class="filter-btn" data-category="philosophie">Philosophie</button>
+                            <button class="filter-btn" data-category="arabische-moderne-literatur">Arabische
+                                Literatur</button>
+                            <button class="filter-btn" data-category="selbsthilfe">Selbsthilfe</button>
+                            <button class="filter-btn" data-category="dystopie">Dystopie</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Sprache</h3>
+                        <div class="filter-buttons" id="language-filters">
+                            <button class="filter-btn active" data-language="all">Alle</button>
+                            <button class="filter-btn" data-language="arabic">العربية</button>
+                            <button class="filter-btn" data-language="german">Deutsch</button>
+                            <button class="filter-btn" data-language="english">English</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Erscheinungsjahr</h3>
+                        <div class="filter-buttons" id="year-filters">
+                            <button class="filter-btn active" data-year="all">Alle</button>
+                            <button class="filter-btn" data-year="pre1900">Vor 1900</button>
+                            <button class="filter-btn" data-year="1900-2000">1900–2000</button>
+                            <button class="filter-btn" data-year="post2000">Nach 2000</button>
+                        </div>
+                    </div>
+                    <div class="sort-group">
+                        <h3>Sortieren</h3>
+                        <select id="book-sort">
+                            <option value="title-asc">Titel (A–Z)</option>
+                            <option value="title-desc">Titel (Z–A)</option>
+                            <option value="year-asc">Erscheinungsjahr (aufsteigend)</option>
+                            <option value="year-desc">Erscheinungsjahr (absteigend)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="book-grid" id="books-container">
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="1900-2000"
+                        data-title="مائة عام من العزلة" data-author="Gabriel García Márquez" data-isbn="978-0151010608"
+                        data-rating="5">
+                        <h4>مائة عام من العزلة</h4>
+                        <p class="author">Gabriel García Márquez</p>
+                        <p class="opinion">Ein Meisterwerk des magischen Realismus.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="1900-2000"
+                        data-title="الحب في زمن الكوليرا" data-author="Gabriel García Márquez"
+                        data-isbn="978-0307387264" data-rating="4">
+                        <h4>الحب في زمن الكوليرا</h4>
+                        <p class="author">Gabriel García Márquez</p>
+                        <p class="opinion">Eine tiefgründige Liebesgeschichte voller Leidenschaft.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="1900-2000"
+                        data-title="ليس للكولونيل من يكاتبه" data-author="Gabriel García Márquez"
+                        data-isbn="978-0060907006" data-rating="4">
+                        <h4>ليس للكولونيل من يكاتبه</h4>
+                        <p class="author">Gabriel García Márquez</p>
+                        <p class="opinion">Ein bewegendes Werk über Stolz und Verzweiflung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="1900-2000"
+                        data-title="المسخ" data-author="Franz Kafka" data-isbn="978-0553213690" data-rating="5">
+                        <h4>المسخ</h4>
+                        <p class="author">Franz Kafka</p>
+                        <p class="opinion">Ein verstörendes Meisterwerk über Entfremdung.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="1900-2000"
+                        data-title="القلعة" data-author="Franz Kafka" data-isbn="978-0805204155" data-rating="4">
+                        <h4>القلعة</h4>
+                        <p class="author">Franz Kafka</p>
+                        <p class="opinion">Ein faszinierender Roman über Bürokratie und Isolation.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="1900-2000" data-title="أرني الله" data-author="Tawfiq Al-Hakim"
+                        data-isbn="978-9770904879" data-rating="4">
+                        <h4>أرني الله</h4>
+                        <p class="author">Tawfiq Al-Hakim</p>
+                        <p class="opinion">Ein intellektuelles Werk über Glauben und Zweifel.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="1900-2000" data-title="الشهيد الشيطان" data-author="Tawfiq Al-Hakim"
+                        data-isbn="978-9770904886" data-rating="3">
+                        <h4>الشهيد الشيطان</h4>
+                        <p class="author">Tawfiq Al-Hakim</p>
+                        <p class="opinion">Eine tiefgründige Auseinandersetzung mit Moral.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="1900-2000" data-title="رحلة إلى الغد" data-author="Tawfiq Al-Hakim"
+                        data-isbn="978-9770904893" data-rating="4">
+                        <h4>رحلة إلى الغد</h4>
+                        <p class="author">Tawfiq Al-Hakim</p>
+                        <p class="opinion">Ein visionärer Blick auf die Zukunft.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="الجريمة والعقاب ١،٢" data-author="Fyodor Dostoevsky" data-isbn="978-0143058144"
+                        data-rating="5">
+                        <h4>الجريمة والعقاب ١،٢</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Ein tiefes psychologisches Drama über Schuld und Erlösung.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="الإنسان الصرصار" data-author="Fyodor Dostoevsky" data-isbn="978-0140449136"
+                        data-rating="4">
+                        <h4>الإنسان الصرصار</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Ein introspektives Werk über die menschliche Psyche.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="الأبله" data-author="Fyodor Dostoevsky" data-isbn="978-0140447927" data-rating="4">
+                        <h4>الأبله</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Eine komplexe Geschichte über Reinheit und Gesellschaft.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="المقامر" data-author="Fyodor Dostoevsky" data-isbn="978-0140441796" data-rating="3">
+                        <h4>المقامر</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Ein packendes Werk über Sucht und Verzweiflung.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="الإخوة كرامازوف" data-author="Fyodor Dostoevsky" data-isbn="978-0374528379"
+                        data-rating="5">
+                        <h4>الإخوة كرامازوف</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Ein episches Werk über Familie, Glaube und Moral.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="الفقراء" data-author="Fyodor Dostoevsky" data-isbn="978-0140441178" data-rating="4">
+                        <h4>الفقراء</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Eine rührende Geschichte über Armut und Menschlichkeit.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="المساكين" data-author="Fyodor Dostoevsky" data-isbn="978-0140441178"
+                        data-rating="4">
+                        <h4>المساكين</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Ein sensibles Porträt von Leid und Hoffnung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="arabic" data-year="pre1900"
+                        data-title="الجارة" data-author="Fyodor Dostoevsky" data-isbn="978-0140441178" data-rating="3">
+                        <h4>الجارة</h4>
+                        <p class="author">Fyodor Dostoevsky</p>
+                        <p class="opinion">Eine emotionale Erzählung über zwischenmenschliche Beziehungen.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="pre1900"
+                        data-title="الأمير" data-author="Niccolò Machiavelli" data-isbn="978-0140449150"
+                        data-rating="4">
+                        <h4>الأمير</h4>
+                        <p class="author">Niccolò Machiavelli</p>
+                        <p class="opinion">Ein zeitloses Werk über Macht und Politik.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="pre1900"
+                        data-title="هكذا تكلم زرادشت" data-author="Friedrich Nietzsche" data-isbn="978-0140441185"
+                        data-rating="5">
+                        <h4>هكذا تكلم زرادشت</h4>
+                        <p class="author">Friedrich Nietzsche</p>
+                        <p class="opinion">Eine herausfordernde philosophische Dichtung.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="1900-2000"
+                        data-title="رحلتي من الشك إلى الإيمان" data-author="Dr. Mostafa Mahmoud"
+                        data-isbn="978-9770904909" data-rating="4">
+                        <h4>رحلتي من الشك إلى الإيمان</h4>
+                        <p class="author">Dr. Mostafa Mahmoud</p>
+                        <p class="opinion">Ein spiritueller Weg zur Selbstfindung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="1900-2000"
+                        data-title="الشيطان يحكم" data-author="Dr. Mostafa Mahmoud" data-isbn="978-9770904916"
+                        data-rating="3">
+                        <h4>الشيطان يحكم</h4>
+                        <p class="author">Dr. Mostafa Mahmoud</p>
+                        <p class="opinion">Ein kritischer Blick auf gesellschaftliche Strukturen.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="1900-2000"
+                        data-title="حوار مع صديقي الملحد" data-author="Dr. Mostafa Mahmoud" data-isbn="978-9770904923"
+                        data-rating="4">
+                        <h4>حوار مع صديقي الملحد</h4>
+                        <p class="author">Dr. Mostafa Mahmoud</p>
+                        <p class="opinion">Ein intellektueller Dialog über Glaube und Atheismus.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="dystopie" data-language="arabic" data-year="1900-2000"
+                        data-title="مزرعة الحيوانات" data-author="George Orwell" data-isbn="978-0451526342"
+                        data-rating="5">
+                        <h4>مزرعة الحيوانات</h4>
+                        <p class="author">George Orwell</p>
+                        <p class="opinion">Eine brillante Allegorie über Macht und Korruption.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أرض زيكولا" data-author="Amr Abdelhamid"
+                        data-isbn="978-9778030266" data-rating="4">
+                        <h4>أرض زيكولا</h4>
+                        <p class="author">Amr Abdelhamid</p>
+                        <p class="opinion">Faszinierende Science-Fiction mit arabischem Flair.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أماريتا" data-author="Amr Abdelhamid"
+                        data-isbn="978-9778030273" data-rating="4">
+                        <h4>أماريتا</h4>
+                        <p class="author">Amr Abdelhamid</p>
+                        <p class="opinion">Ein spannendes Abenteuer in einer fantastischen Welt.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="وادي الذئاب المنسية" data-author="Amr Abdelhamid"
+                        data-isbn="978-9778030280" data-rating="4">
+                        <h4>وادي الذئاب المنسية</h4>
+                        <p class="author">Amr Abdelhamid</p>
+                        <p class="opinion">Ein episches Werk voller Mystik und Spannung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="قواعد جارتين" data-author="Amr Abdelhamid"
+                        data-isbn="978-9778030297" data-rating="4">
+                        <h4>قواعد جارتين</h4>
+                        <p class="author">Amr Abdelhamid</p>
+                        <p class="opinion">Eine fesselnde Fortsetzung der Zikola-Saga.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="دقات الشامو" data-author="Amr Abdelhamid"
+                        data-isbn="978-9778030303" data-rating="4">
+                        <h4>دقات الشامو</h4>
+                        <p class="author">Amr Abdelhamid</p>
+                        <p class="opinion">Ein packendes Finale voller Emotionen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أمواج أكما" data-author="Amr Abdelhamid"
+                        data-isbn="978-9778030310" data-rating="3">
+                        <h4>أمواج أكما</h4>
+                        <p class="author">Amr Abdelhamid</p>
+                        <p class="opinion">Ein kreatives Werk voller Fantasie.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="ملائك نصيبين" data-author="Dr. Ahmed Khaled Mustafa"
+                        data-isbn="978-9778030327" data-rating="4">
+                        <h4>ملائك نصيبين</h4>
+                        <p class="author">Dr. Ahmed Khaled Mustafa</p>
+                        <p class="opinion">Ein mysteriöser Roman über Engel und Geheimnisse.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أنتيخريستوس" data-author="Dr. Ahmed Khaled Mustafa"
+                        data-isbn="978-9778030334" data-rating="4">
+                        <h4>أنتيخريستوس</h4>
+                        <p class="author">Dr. Ahmed Khaled Mustafa</p>
+                        <p class="opinion">Ein provokatives Werk über Glaube und Konflikt.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أنتيخريستوس ٢" data-author="Dr. Ahmed Khaled Mustafa"
+                        data-isbn="978-9778030341" data-rating="4">
+                        <h4>أنتيخريستوس ٢</h4>
+                        <p class="author">Dr. Ahmed Khaled Mustafa</p>
+                        <p class="opinion">Eine spannende Fortsetzung mit tiefen Themen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أرض السافلين" data-author="Dr. Ahmed Khaled Mustafa"
+                        data-isbn="978-9778030358" data-rating="4">
+                        <h4>أرض السافلين</h4>
+                        <p class="author">Dr. Ahmed Khaled Mustafa</p>
+                        <p class="opinion">Ein düsteres Epos über menschliche Abgründe.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="العطر: قصة قاتل" data-author="Patrick Süskind" data-isbn="978-3257230475"
+                        data-rating="5">
+                        <h4>العطر: قصة قاتل</h4>
+                        <p class="author">Patrick Süskind</p>
+                        <p class="opinion">Ein faszinierender Krimi über Obsession und Mord.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="post2000"
+                        data-title="خوف" data-author="Osama Al-Muslim" data-isbn="978-9996681516" data-rating="4">
+                        <h4>خوف</h4>
+                        <p class="author">Osama Al-Muslim</p>
+                        <p class="opinion">Ein nervenaufreibender Horror-Thriller.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="post2000"
+                        data-title="خوف ٢" data-author="Osama Al-Muslim" data-isbn="978-9996681523" data-rating="4">
+                        <h4>خوف ٢</h4>
+                        <p class="author">Osama Al-Muslim</p>
+                        <p class="opinion">Eine düstere Fortsetzung voller Spannung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="post2000"
+                        data-title="خوف ٣" data-author="Osama Al-Muslim" data-isbn="978-9996681530" data-rating="4">
+                        <h4>خوف ٣</h4>
+                        <p class="author">Osama Al-Muslim</p>
+                        <p class="opinion">Ein packender Abschluss der Trilogie.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="شارلوك هولمز: السلسلة من ١-٩" data-author="Arthur Conan Doyle"
+                        data-isbn="978-0192123299" data-rating="5">
+                        <h4>شارلوك هولمز: السلسلة من ١-٩</h4>
+                        <p class="author">Arthur Conan Doyle</p>
+                        <p class="opinion">Klassische Detektivgeschichten voller Raffinesse.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="selbsthilfe" data-language="arabic" data-year="post2000"
+                        data-title="محاط بالحمقى" data-author="Thomas Erikson" data-isbn="978-9123512348"
+                        data-rating="3">
+                        <h4>محاط بالحمقى</h4>
+                        <p class="author">Thomas Erikson</p>
+                        <p class="opinion">Ein hilfreicher Leitfaden für zwischenmenschliche Beziehungen.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="selbsthilfe" data-language="arabic" data-year="post2000"
+                        data-title="محاط بالمرضى النفسيين" data-author="Thomas Erikson" data-isbn="978-9123512355"
+                        data-rating="3">
+                        <h4>محاط بالمرضى النفسيين</h4>
+                        <p class="author">Thomas Erikson</p>
+                        <p class="opinion">Ein aufschlussreicher Blick auf toxische Persönlichkeiten.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="post2000"
+                        data-title="شيفرة دافنشي" data-author="Dan Brown" data-isbn="978-0385504201" data-rating="4">
+                        <h4>شيفرة دافنشي</h4>
+                        <p class="author">Dan Brown</p>
+                        <p class="opinion">Ein packender Thriller über Kunst und Geheimnisse.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="selbsthilfe" data-language="arabic" data-year="post2000"
+                        data-title="نظرية الفستق" data-author="Fahd Amer Al-Ahmadi" data-isbn="978-9996681547"
+                        data-rating="3">
+                        <h4>نظرية الفستق</h4>
+                        <p class="author">Fahd Amer Al-Ahmadi</p>
+                        <p class="opinion">Ein inspirierendes Buch über persönlichen Erfolg.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="selbsthilfe" data-language="arabic" data-year="post2000"
+                        data-title="الأب الغني والأب الفقير" data-author="Robert T. Kiyosaki" data-isbn="978-1612680194"
+                        data-rating="4">
+                        <h4>الأب الغني والأب الفقير</h4>
+                        <p class="author">Robert T. Kiyosaki</p>
+                        <p class="opinion">Ein Klassiker über finanzielle Bildung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="selbsthilfe" data-language="arabic" data-year="post2000"
+                        data-title="فاتتني صلاة" data-author="Osama Jamal" data-isbn="978-9778030365" data-rating="3">
+                        <h4>فاتتني صلاة</h4>
+                        <p class="author">Osama Jamal</p>
+                        <p class="opinion">Ein bewegendes Werk über Spiritualität und Disziplin.</p>
+                        <p class="rating">★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="post2000"
+                        data-title="رسائل من القرآن" data-author="Adham Sharqawi" data-isbn="978-9778030372"
+                        data-rating="4">
+                        <h4>رسائل من القرآن</h4>
+                        <p class="author">Adham Sharqawi</p>
+                        <p class="opinion">Inspirierende Reflexionen über den Koran.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="philosophie" data-language="arabic" data-year="post2000"
+                        data-title="رسائل من النبي" data-author="Adham Sharqawi" data-isbn="978-9778030389"
+                        data-rating="4">
+                        <h4>رسائل من النبي</h4>
+                        <p class="author">Adham Sharqawi</p>
+                        <p class="opinion">Tiefgründige Einblicke in prophetische Weisheiten.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="أبابيل" data-author="Ahmed Al Hamdan"
+                        data-isbn="978-9778030396" data-rating="4">
+                        <h4>أبابيل</h4>
+                        <p class="author">Ahmed Al Hamdan</p>
+                        <p class="opinion">Ein fesselnder Fantasy-Roman.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="جومانا" data-author="Ahmed Al Hamdan"
+                        data-isbn="978-9778030402" data-rating="4">
+                        <h4>جومانا</h4>
+                        <p class="author">Ahmed Al Hamdan</p>
+                        <p class="opinion">Eine emotionale Reise durch eine mystische Welt.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="السجيل" data-author="Ahmed Al Hamdan"
+                        data-isbn="978-9778030419" data-rating="4">
+                        <h4>السجيل</h4>
+                        <p class="author">Ahmed Al Hamdan</p>
+                        <p class="opinion">Ein episches Abenteuer voller Spannung.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="arabische-moderne-literatur" data-language="arabic"
+                        data-year="post2000" data-title="الجساسة" data-author="Ahmed Al Hamdan"
+                        data-isbn="978-9778030426" data-rating="4">
+                        <h4>الجساسة</h4>
+                        <p class="author">Ahmed Al Hamdan</p>
+                        <p class="opinion">Ein packendes Werk mit tiefen Symbolen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="أرسين لوبين (اللص الظريف)" data-author="Maurice Leblanc" data-isbn="978-0143104865"
+                        data-rating="4">
+                        <h4>أرسين لوبين (اللص الظريف)</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein charmanter Krimi über einen Meisterdieb.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="أرسين لوبين يواجه شارلوك هولمز" data-author="Maurice Leblanc"
+                        data-isbn="978-0143104865" data-rating="4">
+                        <h4>أرسين لوبين يواجه شارلوك هولمز</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein spannendes Duell zweier Legenden.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="أرسين لوبين (الحياة المزدوجة)" data-author="Maurice Leblanc"
+                        data-isbn="978-0143104865" data-rating="4">
+                        <h4>أرسين لوبين (الحياة المزدوجة)</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein cleverer Krimi voller Wendungen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="اعترافات أرسين لوبين" data-author="Maurice Leblanc" data-isbn="978-0143104865"
+                        data-rating="4">
+                        <h4>اعترافات أرسين لوبين</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein faszinierender Einblick in die Welt eines Diebes.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="الحياة الثانية لأرسين لوبين" data-author="Maurice Leblanc"
+                        data-isbn="978-0143104865" data-rating="4">
+                        <h4>الحياة الثانية لأرسين لوبين</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein packendes Abenteuer mit neuen Herausforderungen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="أرسين لوبين والكونتيسة المجهولة" data-author="Maurice Leblanc"
+                        data-isbn="978-0143104865" data-rating="4">
+                        <h4>أرسين لوبين والكونتيسة المجهولة</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein mysteriöser Krimi voller Intrigen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="أرسين لوبين في وكالة بارنيت" data-author="Maurice Leblanc"
+                        data-isbn="978-0143104865" data-rating="4">
+                        <h4>أرسين لوبين في وكالة بارنيت</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein cleveres Werk über Täuschung und Ermittlungen.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="arabic" data-year="1900-2000"
+                        data-title="أرسين لوبين لغز السدادة الكريستال" data-author="Maurice Leblanc"
+                        data-isbn="978-0143104865" data-rating="4">
+                        <h4>أرسين لوبين لغز السدادة الكريستال</h4>
+                        <p class="author">Maurice Leblanc</p>
+                        <p class="opinion">Ein fesselnder Krimi mit einem kniffligen Rätsel.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="german" data-year="pre1900"
+                        data-title="Faust" data-author="Johann Wolfgang von Goethe" data-isbn="978-0140449013"
+                        data-rating="5">
+                        <h4>Faust</h4>
+                        <p class="author">Johann Wolfgang von Goethe</p>
+                        <p class="opinion">Ein monumentales Drama über menschliche Sehnsüchte und den Pakt mit dem
+                            Teufel.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="german" data-year="pre1900"
+                        data-title="Nathan der Weise" data-author="Gotthold Ephraim Lessing" data-isbn="978-3150000014"
+                        data-rating="4">
+                        <h4>Nathan der Weise</h4>
+                        <p class="author">Gotthold Ephraim Lessing</p>
+                        <p class="opinion">Ein aufklärerisches Werk über Toleranz und Menschlichkeit.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="klassik" data-language="german" data-year="pre1900"
+                        data-title="Die Räuber" data-author="Friedrich Schiller" data-isbn="978-3150000151"
+                        data-rating="4">
+                        <h4>Die Räuber</h4>
+                        <p class="author">Friedrich Schiller</p>
+                        <p class="opinion">Ein leidenschaftliches Drama über Freiheit und Rebellion.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="krimi" data-language="german" data-year="1900-2000"
+                        data-title="Das Parfüm" data-author="Patrick Süskind" data-isbn="978-3257230475"
+                        data-rating="5">
+                        <h4>Das Parfüm</h4>
+                        <p class="author">Patrick Süskind</p>
+                        <p class="opinion">Ein faszinierender Roman über die Obsession eines Mörders mit Düften.</p>
+                        <p class="rating">★★★★★</p>
+                    </div>
+                    <div class="book-module" data-category="dystopie" data-language="english" data-year="1900-2000"
+                        data-title="The Giver" data-author="Lois Lowry" data-isbn="978-0544336261" data-rating="4">
+                        <h4>The Giver</h4>
+                        <p class="author">Lois Lowry</p>
+                        <p class="opinion">Eine bewegende Dystopie über Erinnerung und Freiheit.</p>
+                        <p class="rating">★★★★</p>
+                    </div>
+                </div>
+                <div id="no-results" class="no-results" style="display: none;">
+                    <h3>Keine Bücher gefunden</h3>
+                    <p>Versuchen Sie andere Suchbegriffe oder Filter.</p>
+                </div>
+                <div id="book-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close" onclick="closeModal()">✖</span>
+                        <h3 id="modal-title"></h3>
+                        <p id="modal-author"></p>
+                        <p id="modal-opinion"></p>
+                        <p id="modal-isbn"></p>
+                        <p id="modal-description"></p>
+                        <p id="modal-rating"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="contact-content">
+                    <h2>Kontakt</h2>
+                    <p style="text-align: center; margin-bottom: 2rem;">Lass uns verbinden!</p>
+                    <div class="contact-grid">
+                        <div class="contact-module">
+                            <a href="mailto:idriswahib@icloud.com">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                E-Mail
+                            </a>
+                        </div>
+                        <div class="contact-module">
+                            <a href="https://linkedin.com/in/itsidris0" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                    </path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                        <div class="contact-module">
+                            <a href="https://github.com/itsidris0" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Idris Wahib. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.nav-links a[onclick*="${sectionId}"]`).classList.add('active');
+            // Close mobile menu after selection
+            document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.hamburger').textContent = '☰';
+        }
+
+        function toggleNav() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+        }
+
+        function openModal(book) {
+            const modal = document.getElementById('book-modal');
+            const title = book.querySelector('h4').textContent;
+            const author = book.querySelector('.author').textContent;
+            const opinion = book.querySelector('.opinion').textContent;
+            const isbn = book.getAttribute('data-isbn');
+            const rating = book.querySelector('.rating').textContent;
+            const description = bookDescriptions[title] || 'Keine zusätzliche Beschreibung verfügbar.';
+
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-author').textContent = `Autor: ${author}`;
+            document.getElementById('modal-opinion').textContent = `Meinung: ${opinion}`;
+            document.getElementById('modal-isbn').textContent = `ISBN: ${isbn}`;
+            document.getElementById('modal-description').textContent = `Beschreibung: ${description}`;
+            document.getElementById('modal-rating').textContent = `Bewertung: ${rating}`;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('book-modal').style.display = 'none';
+        }
+
+        const bookDescriptions = {
+            'مائة عام من العزلة': 'Ein epischer Roman über die Buendía-Familie über sieben Generationen hinweg in der fiktiven Stadt Macondo.',
+            'الحب في زمن الكوليرا': 'Eine Geschichte über eine lebenslange Liebe, die trotz Widrigkeiten und Zeit überdauert.',
+            'ليس للكولونيل من يكاتبه': 'Die Geschichte eines alten Obersts, der auf eine längst überfällige Pension wartet.',
+            'المسخ': 'Ein Mann erwacht als riesiges Insekt und kämpft mit seiner neuen Identität und gesellschaftlicher Ausgrenzung.',
+            'القلعة': 'Ein Landvermesser versucht, Zugang zu einer mysteriösen Burg zu bekommen, die ein Dorf beherrscht.',
+            'أرني الله': 'Ein philosophisches Werk, das Fragen des Glaubens und der Existenz Gottes erforscht.',
+            'الشهيد الشيطان': 'Eine Auseinandersetzung mit moralischen Konflikten und gesellschaftlichen Normen.',
+            'رحلة إلى الغد': 'Ein visionärer Roman über die Möglichkeiten der Zukunft und menschliche Entwicklung.',
+            'الجريمة والعقاب ١،٢': 'Ein Student begeht einen Mord und wird von Schuld und Gewissen geplagt.',
+            'الإنسان الصرصار': 'Eine introspektive Erzählung über die innere Zerrissenheit und Isolation eines Mannes.',
+            'الأبله': 'Ein naiver, gutherziger Mann navigiert durch die komplexe russische Gesellschaft.',
+            'المقامر': 'Ein Mann wird von seiner Spielsucht in den Ruin getrieben.',
+            'الإخوة كرامازوف': 'Ein episches Drama über drei Brüder und die moralischen Fragen ihres Lebens',
+            'الفقراء': 'Eine einfühlsame Darstellung von Armut und menschlicher Verbindung durch Briefe.',
+            'المساكين': 'Eine rührende Geschichte über Mitgefühl und Hoffnung inmitten von Elend.',
+            'الجارة': 'Eine emotionale Erzählung über Freundschaft und zwischenmenschliche Beziehungen.',
+            'الأمير': 'Ein klassisches Werk über politische Macht und Strategien zur Machterhaltung.',
+            'هكذا تكلم زرادشت': 'Eine philosophische Dichtung, die Themen wie Moral, Freiheit und den Übermenschen behandelt.',
+            'رحلتي من الشك إلى الإيمان': 'Ein spiritueller Bericht über die Suche nach Glauben und innerem Frieden.',
+            'الشيطان يحكم': 'Ein kritischer Blick auf die Mechanismen von Macht und Korruption in der Gesellschaft.',
+            'حوار مع صديقي الملحد': 'Ein intellektueller Austausch über Glaube, Atheismus und die Suche nach Wahrheit.',
+            'مزرعة الحيوانات': 'Eine Allegorie über die Gefahren von Totalitarismus und Machtmissbrauch.',
+            'أرض زيكولا': 'Ein faszinierender Science-Fiction-Roman, der eine dystopische Welt mit arabischem Flair beschreibt.',
+            'أماريتا': 'Die Fortsetzung von أرض زيكولا, die neue Abenteuer in einer fantastischen Welt bietet.',
+            'وادي الذئاب المنسية': 'Ein mystischer Roman voller Spannung und tiefgründiger Symbolik.',
+            'قواعد جارتين': 'Ein weiteres Kapitel der Zikola-Saga mit komplexen Charakteren und Handlungen.',
+            'دقات الشامو': 'Ein emotionales Finale der Zikola-Reihe mit tiefen Einblicken.',
+            'أمواج أكما': 'Ein kreatives Werk, das Fantasie und Abenteuer miteinander verbindet.',
+            'ملائك نصيبين': 'Ein mysteriöser Roman, der sich mit Engeln und verborgenen Geheimnissen beschäftigt.',
+            'أنتيخريستوس': 'Ein provokatives Werk, das Glaube, Macht und Konflikte hinterfragt.',
+            'أنتيخريستوس ٢': 'Die spannende Fortsetzung, die tiefere Einblicke in die Handlung bietet.',
+            'أرض السافلين': 'Ein düsteres Epos, das die Abgründe der menschlichen Natur erforscht.',
+            'العطر: قصة قاتل': 'Ein faszinierender Krimi über einen mörderischen Parfümeur im 18. Jahrhundert.',
+            'خوف': 'Ein nervenaufreibender Horror-Thriller, der Spannung und Angst vereint.',
+            'خوف ٢': 'Die Fortsetzung des Horrorthrillers mit noch intensiveren Momenten.',
+            'خوف ٣': 'Der abschließende Teil der Trilogie, der die Geschichte zu einem packenden Ende führt.',
+            'شارلوك هولمز: السلسلة من ١-٩': 'Klassische Detektivgeschichten über den legendären Sherlock Holmes.',
+            'محاط بالحمقى': 'Ein Leitfaden, wie man mit verschiedenen Persönlichkeiten im Alltag umgeht.',
+            'محاط بالمرضى النفسيين': 'Ein aufschlussreiches Buch über den Umgang mit toxischen Menschen.',
+            'شيفرة دافنشي': 'Ein spannender Thriller über Kunst, Symbole und verborgene Geheimnisse.',
+            'نظرية الفستق': 'Ein inspirierendes Selbsthilfebuch über persönlichen Erfolg und Motivation.',
+            'الأب الغني والأب الفقير': 'Ein Klassiker über finanzielle Bildung und Vermögensaufbau.',
+            'فاتتني صلاة': 'Ein spirituelles Werk über Glauben, Disziplin und Selbstreflexion.',
+            'رسائل من القرآن': 'Inspirierende Reflexionen über die Weisheiten des Korans.',
+            'رسائل من النبي': 'Einblick in die Lehren und Weisheiten des Propheten.',
+            'أبابيل': 'Ein fesselnder Fantasy-Roman mit tiefen kulturellen Wurzeln.',
+            'جومانا': 'Eine emotionale Reise durch eine mystische Welt voller Geheimnisse.',
+            'السجيل': 'Ein episches Abenteuer, das Spannung und Mystik vereint.',
+            'الجساسة': 'Ein Werk voller Symbolik und tiefgründiger Erzählungen.',
+            'أرسين لوبين (اللص الظريف)': 'Die Abenteuer eines charmanten Meisterdiebs.',
+            'أرسين لوبين يواجه شارلوك هولمز': 'Ein spannendes Duell zwischen zwei ikonischen Figuren.',
+            'أرسين لوبين (الحياة المزدوجة)': 'Ein Krimi über Täuschung und Identität.',
+            'اعترافات أرسين لوبين': 'Ein faszinierender Einblick in die Gedankenwelt eines Diebes.',
+            'الحياة الثانية لأرسين لوبين': 'Neue Abenteuer des charismatischen Diebes.',
+            'أرسين لوبين والكونتيسة المجهولة': 'Ein mysteriöser Krimi voller Intrigen.',
+            'أرسين لوبين في وكالة بارنيت': 'Ein cleveres Werk über Ermittlungen und Täuschung.',
+            'أرسين لوبين لغز السدادة الكريستال': 'Ein kniffliger Krimi mit einem faszinierenden Rätsel.',
+            'Faust': 'Ein monumentales Drama über menschliche Sehnsüchte und den Pakt mit dem Teufel.',
+            'Nathan der Weise': 'Ein aufklärerisches Werk über Toleranz und Menschlichkeit.',
+            'Die Räuber': 'Ein leidenschaftliches Drama über Freiheit und Rebellion.',
+            'Das Parfüm': 'Ein Roman über die Obsession eines Mörders mit Düften.',
+            'The Giver': 'Eine bewegende Dystopie über Erinnerung, Freiheit und die menschliche Natur.'
+        };
+
+        // Initialize books
+        const books = Array.from(document.querySelectorAll('.book-module'));
+        const booksContainer = document.getElementById('books-container');
+        const noResults = document.getElementById('no-results');
+
+        // Filter and sort books
+        function filterAndSortBooks() {
+            const searchQuery = document.getElementById('book-search').value.toLowerCase();
+            const activeCategory = document.querySelector('#category-filters .filter-btn.active')?.getAttribute('data-category') || 'all';
+            const activeLanguage = document.querySelector('#language-filters .filter-btn.active')?.getAttribute('data-language') || 'all';
+            const activeYear = document.querySelector('#year-filters .filter-btn.active')?.getAttribute('data-year') || 'all';
+            const sortValue = document.getElementById('book-sort').value;
+
+            let filteredBooks = books.filter(book => {
+                const title = book.getAttribute('data-title').toLowerCase();
+                const author = book.getAttribute('data-author').toLowerCase();
+                const category = book.getAttribute('data-category');
+                const language = book.getAttribute('data-language');
+                const year = book.getAttribute('data-year');
+
+                const matchesSearch = title.includes(searchQuery) || author.includes(searchQuery);
+                const matchesCategory = activeCategory === 'all' || category === activeCategory;
+                const matchesLanguage = activeLanguage === 'all' || language === activeLanguage;
+                const matchesYear = activeYear === 'all' || year === activeYear;
+
+                return matchesSearch && matchesCategory && matchesLanguage && matchesYear;
+            });
+
+            // Sort books
+            filteredBooks.sort((a, b) => {
+                const titleA = a.getAttribute('data-title');
+                const titleB = b.getAttribute('data-title');
+                const yearA = parseInt(a.getAttribute('data-year').split('-')[0]) || 0;
+                const yearB = parseInt(b.getAttribute('data-year').split('-')[0]) || 0;
+
+                if (sortValue === 'title-asc') {
+                    return titleA.localeCompare(titleB);
+                } else if (sortValue === 'title-desc') {
+                    return titleB.localeCompare(titleA);
+                } else if (sortValue === 'year-asc') {
+                    return yearA - yearB;
+                } else if (sortValue === 'year-desc') {
+                    return yearB - yearA;
+                }
+                return 0;
+            });
+
+            // Clear and repopulate books container
+            booksContainer.innerHTML = '';
+            if (filteredBooks.length === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+                filteredBooks.forEach(book => booksContainer.appendChild(book));
+            }
+        }
+
+        // Event listeners for filters and sort
+        document.getElementById('book-search').addEventListener('input', filterAndSortBooks);
+        document.getElementById('book-sort').addEventListener('change', filterAndSortBooks);
+
+        document.querySelectorAll('#category-filters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#category-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterAndSortBooks();
+            });
+        });
+
+        document.querySelectorAll('#language-filters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#language-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterAndSortBooks();
+            });
+        });
+
+        document.querySelectorAll('#year-filters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#year-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterAndSortBooks();
+            });
+        });
+
+        // Event listener for book modules
+        books.forEach(book => {
+            book.addEventListener('click', () => openModal(book));
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('book-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('book-modal')) {
+                closeModal();
+            }
+        });
+
+        // Initialize with default filters
+        filterAndSortBooks();
+    </script>
+</body>
+
+</html>
